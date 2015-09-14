@@ -1,0 +1,135 @@
+<div class="ant-calendar ant-calendar-orient-top ant-calendar-orient-left" tabindex="0">
+	<div style="outline:none;" ng-show="viewMode==0">
+		<div class="ant-calendar-header">
+			<a class="ant-calendar-prev-year-btn" role="button" title="上一年 (Control键加左方向键)"
+			   ng-click="calendar.previousYear()">«</a>
+			<a class="ant-calendar-prev-month-btn" role="button" title="上个月 (翻页上键)" ng-click="calendar.previousMonth()">‹</a>
+			<span class="ant-calendar-ym-select">
+				<a class="ant-calendar-year-select" role="button" title="选择年份"
+				   ng-click="viewMode=2">{{calendar.year}}年</a>
+				<a class="ant-calendar-month-select" role="button" title="选择月份"
+				   ng-click="viewMode=1">{{monthArr[calendar.month]}}</a>
+			</span>
+			<a class="ant-calendar-next-month-btn" title="下个月 (翻页下键)" ng-click="calendar.nextMonth()">›</a>
+			<a class="ant-calendar-next-year-btn" title="下一年 (Control键加右方向键)" ng-click="calendar.nextYear()">»</a>
+		</div>
+		<div class="ant-calendar-calendar-body">
+			<table class="ant-calendar-table" cellspacing="0" role="grid">
+				<thead>
+				<tr role="row">
+					<th role="columnheader" title="星期一" class="ant-calendar-column-header"
+					    ng-repeat="day in weekdayArr">
+						<span class="ant-calendar-column-header-inner">{{day}}</span>
+					</th>
+				</tr>
+				</thead>
+				<tbody class="ant-calendartbody">
+				<tr role="row" ng-repeat="row in calendar.days">
+					<td role="gridcell" class="ant-calendar-cell" ng-repeat="day in row track by $index"
+					    ng-attr-title="{{day.date || 'yyyy-MM-dd'}}"
+					    ng-class="{'ant-calendar-disabled-cell':!dateInRange(day),'ant-calendar-selected-day':!(day-calendar.selectedDate),'ant-calendar-today':!(day-now)}"
+					    ng-click="selectDate(day)">
+						<span class="ant-calendar-date" aria-selected="false" aria-disabled="false">
+							{{day.date.getDate()}}
+						</span>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="ant-calendar-footer">
+			<span class="ant-calendar-footer-btn">
+				<a class="ant-calendar-today-btn" role="button" ng-attr-title="{{now || 'yyyy-MM-dd'}}">今天</a>
+			</span>
+		</div>
+	</div>
+
+	<div style="outline: none;" ng-show="viewMode==1">
+		<div class="ant-calendar-month-panel">
+			<div>
+				<div class="ant-calendar-month-panel-header">
+					<a class="ant-calendar-month-panel-prev-year-btn" role="button" title="上一年 (Control键加左方向键)"
+					   ng-click="calendar.previousYear()">«</a>
+					<a class="ant-calendar-month-panel-year-select" role="button" title="选择年份">
+						<span class="ant-calendar-month-panel-year-select-content">{{calendar.year}}年</span>
+						<span class="ant-calendar-month-panel-year-select-arrow">x</span>
+					</a>
+					<a class="ant-calendar-month-panel-next-year-btn" role="button" title="下一年 (Control键加右方向键)"
+					   ng-click="calendar.nextYear()">»</a>
+				</div>
+				<div class="ant-calendar-month-panel-body">
+					<table class="ant-calendar-month-panel-table" cellspacing="0" role="grid">
+						<tbody class="ant-calendar-month-panel-tbody">
+						<tr role="row" ng-repeat="row in calendar.months">
+							<td role="gridcell" title="1月" class="ant-calendar-month-panel-cell"
+							    ng-repeat="month in row"
+								ng-click="selectMonth(month)">
+								<a class="ant-calendar-month-panel-month">{{monthArr[month]}}</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="outline:none;" ng-show="viewMode==2">
+		<div class="ant-calendar-year-panel-header">
+			<a class="ant-calendar-year-panel-prev-decade-btn" role="button" title="上一年代"
+			   ng-click="calendar.previousAge()">«</a>
+			<a class="ant-calendar-year-panel-decade-select" role="button" title="选择年代">
+				<span class="ant-calendar-year-panel-decade-select-content">
+					<span>{{calendar.years[0]}}</span>
+					<span>-</span>
+					<span>{{calendar.years[9]}}</span>
+				</span>
+				<span class="ant-calendar-year-panel-decade-select-arrow">x</span>
+			</a>
+			<a class="ant-calendar-year-panel-next-decade-btn" role="button" title="下一年代"
+			   ng-click="calendar.nextAge()">»</a>
+		</div>
+		<div class="ant-calendar-year-panel-body">
+			<table class="ant-calendar-year-panel-table" cellspacing="0" role="grid">
+				<tbody class="ant-calendar-year-panel-tbody">
+				<tr role="row">
+					<td role="gridcell" class="ant-calendar-year-panel-cell ant-calendar-year-panel-last-decade-cell"
+					    ng-click="calendar.previousAge()">
+						<a class="ant-calendar-year-panel-year"></a>
+					</td>
+					<td role="gridcell" ng-attr-title="{{year}}" class="ant-calendar-year-panel-cell"
+						ng-repeat="year in calendar.years.slice(0,2)"
+						ng-click="selectYear(year)">
+						<a class="ant-calendar-year-panel-year">{{year}}</a>
+					</td>
+				</tr>
+				<tr role="row">
+					<td role="gridcell" ng-attr-title="{{year}}" class="ant-calendar-year-panel-cell"
+					    ng-repeat="year in calendar.years.slice(2,5)"
+					    ng-click="selectYear(year)">
+						<a class="ant-calendar-year-panel-year">{{year}}</a>
+					</td>
+				</tr>
+				<tr role="row">
+					<td role="gridcell" ng-attr-title="{{year}}" class="ant-calendar-year-panel-cell"
+					    ng-repeat="year in calendar.years.slice(5,8)"
+					    ng-click="selectYear(year)">
+						<a class="ant-calendar-year-panel-year">{{year}}</a>
+					</td>
+				</tr>
+				<tr role="row">
+					<td role="gridcell" ng-attr-title="{{year}}" class="ant-calendar-year-panel-cell"
+					    ng-repeat="year in calendar.years.slice(8,10)"
+					    ng-click="selectYear(year)">
+						<a class="ant-calendar-year-panel-year">{{year}}</a>
+					</td>
+					<td role="gridcell" class="ant-calendar-year-panel-cell ant-calendar-year-panel-next-decade-cell"
+					    ng-click="calendar.nextAge()">
+						<a class="ant-calendar-year-panel-year"></a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

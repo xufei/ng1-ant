@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ng1 ant design</title>
+    <link rel="stylesheet" href="http://ant.design/dist/antd-0.9.1-beta1.min.css">
+    <script src="//cdn.bootcss.com/angular.js/1.4.5/angular.min.js"></script>
+    <base href="/">
+
+</head>
+<body ng-app="app">
+
+<section ng-controller="CheckboxController">
+    <label>
+        <ant-checkbox></ant-checkbox>
+        测试测试
+    </label>
+    <label>
+        <ant-checkbox ng-model="checkValue"></ant-checkbox>
+        绑定到controller中的变量 checkValue: {{checkValue}}
+    </label>
+    <label>
+        <ant-checkbox disabled="true"></ant-checkbox>
+        不可用状态
+    </label>
+    <label>
+        <ant-checkbox disabled="checkValue"></ant-checkbox>
+        不可用状态绑定到另外一个变量
+    </label>
+</section>
+
+<hr/>
+
+<section>
+    <ant-calendar></ant-calendar>
+
+    <ant-datepicker></ant-datepicker>
+</section>
+
+</div>
+
+</body>
+</html>
