@@ -16,7 +16,8 @@ export default class CalendarDirective {
 		this.scope = {
 			minDate: "=",
 			maxDate: "=",
-			selectedDate: "="
+			selectedDate: "=",
+			dateClick: "&"
 		};
 	}
 
@@ -62,6 +63,12 @@ export default class CalendarDirective {
 		$scope.selectDate = function (day) {
 			if ($scope.dateInRange(day)) {
 				calendar.selectedDate = day;
+
+				$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
+
+				if ($scope.dateClick) {
+					$scope.dateClick(calendar.selectedDate);
+				}
 			}
 		};
 

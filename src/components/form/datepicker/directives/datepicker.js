@@ -33,6 +33,11 @@ export default class DatePickerDirective {
 				scope.$digest();
 			}
 		});
+
+		scope.dateClick = function() {
+			scope.currentDate = scope.selectedDate;
+			scope.pop = false;
+		};
 	}
 
 	controller($scope) {

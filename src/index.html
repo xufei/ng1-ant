@@ -31,8 +31,11 @@
 
 <hr/>
 
-<section>
-    <ant-calendar></ant-calendar>
+<section ng-controller="DateController">
+    one day in Teletubbies land: {{oneDay}}
+
+    <ant-calendar selected-date="oneDay" date-click="click()"></ant-calendar>
+
 
     <ant-datepicker></ant-datepicker>
 </section>
