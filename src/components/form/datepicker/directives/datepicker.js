@@ -42,7 +42,7 @@ export default class DatePickerDirective {
 
 	controller($scope) {
 		$scope.$watch("currentDate", function(newDate) {
-			$scope.selectedDate = newDate;
+			//$scope.selectedDate = newDate;
 			//$scope.currentDateStr = this.$filter('date')(newDate, "yyyy-MM-dd HH:mm:ss");
 		});
 	}
