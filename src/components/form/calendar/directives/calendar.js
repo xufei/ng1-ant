@@ -34,11 +34,11 @@ export default class CalendarDirective {
 
 		$scope.now = new Date();
 
-		if ($scope.selectedDate) {
-			calendar.year = $scope.selectedDate.getFullYear();
-			calendar.month = $scope.selectedDate.getMonth();
-			calendar.date = $scope.selectedDate.getDate();
-		}
+		$scope.$watch("selectedDate", function(newDate) {
+			calendar.year = newDate.getFullYear();
+			calendar.month = newDate.getMonth();
+			calendar.date = newDate.getDate();
+		});
 
 		$scope.viewMode = this.ViewStates.DATE;
 

@@ -32,12 +32,14 @@
 <hr/>
 
 <section ng-controller="DateController">
-    one day in Teletubbies land: {{oneDay}}
+    one day in Teletubbies land: {{oneDay.toLocaleString()}}
 
     <ant-calendar selected-date="oneDay" date-click="click()"></ant-calendar>
 
 
     <ant-datepicker></ant-datepicker>
+
+    <ant-datepicker ng-model="oneDay"></ant-datepicker>
 </section>
 
 </div>
