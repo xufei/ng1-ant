@@ -17,7 +17,7 @@
 			<table class="ant-calendar-table" cellspacing="0" role="grid">
 				<thead>
 				<tr role="row">
-					<th role="columnheader" title="星期一" class="ant-calendar-column-header"
+					<th role="columnheader" ng-attr-title="{{day}}" class="ant-calendar-column-header"
 					    ng-repeat="day in weekdayArr">
 						<span class="ant-calendar-column-header-inner">{{day}}</span>
 					</th>
@@ -61,7 +61,7 @@
 					<table class="ant-calendar-month-panel-table" cellspacing="0" role="grid">
 						<tbody class="ant-calendar-month-panel-tbody">
 						<tr role="row" ng-repeat="row in calendar.months">
-							<td role="gridcell" title="1月" class="ant-calendar-month-panel-cell"
+							<td role="gridcell" ng-attr-title="{{month}}" class="ant-calendar-month-panel-cell"
 							    ng-repeat="month in row"
 								ng-click="selectMonth(month)">
 								<a class="ant-calendar-month-panel-month">{{monthArr[month]}}</a>

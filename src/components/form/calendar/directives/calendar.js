@@ -3,13 +3,6 @@ import Calendar from "../../../models/calendar/calendar";
 
 export default class CalendarDirective {
 	constructor() {
-		// 视图模式，一个三个，可以切换，默认是显示日期的
-		this.ViewStates = Object.freeze({
-			DATE: 0,
-			MONTH: 1,
-			YEAR: 2
-		});
-
 		this.template = template;
 		this.restrict = "E";
 
@@ -21,7 +14,7 @@ export default class CalendarDirective {
 		};
 	}
 
-	link(scope, element, attrs) {
+	link(scope) {
 		this.$scope = scope;
 	}
 
@@ -35,12 +28,14 @@ export default class CalendarDirective {
 		$scope.now = new Date();
 
 		$scope.$watch("selectedDate", function(newDate) {
-			calendar.year = newDate.getFullYear();
-			calendar.month = newDate.getMonth();
-			calendar.date = newDate.getDate();
+			if (newDate) {
+				calendar.year = newDate.getFullYear();
+				calendar.month = newDate.getMonth();
+				calendar.date = newDate.getDate();
+			}
 		});
 
-		$scope.viewMode = this.ViewStates.DATE;
+		$scope.viewMode = CalendarDirective.ViewStates.DATE;
 
 		$scope.dateInRange = function(day) {
 			if (!day) {
@@ -74,14 +69,14 @@ export default class CalendarDirective {
 
 		$scope.selectMonth = function (month) {
 			calendar.month = month;
-			$scope.viewMode = this.ViewStates.DATE;
+			$scope.viewMode = CalendarDirective.ViewStates.DATE;
 
 			$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
 		}.bind(this);
 
 		$scope.selectYear = function (year) {
 			calendar.year = year;
-			$scope.viewMode = this.ViewStates.DATE;
+			$scope.viewMode = CalendarDirective.ViewStates.DATE;
 
 			$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
 		}.bind(this);
@@ -90,3 +85,10 @@ export default class CalendarDirective {
 
 CalendarDirective.weekdays = ["日", "一", "二", "三", "四", "五", "六"];
 CalendarDirective.months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+
+// 视图模式，一个三个，可以切换，默认是显示日期的
+CalendarDirective.ViewStates = Object.freeze({
+	DATE: 0,
+	MONTH: 1,
+	YEAR: 2
+});

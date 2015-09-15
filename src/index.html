@@ -33,13 +33,19 @@
 
 <section ng-controller="DateController">
     one day in Teletubbies land: {{oneDay.toLocaleString()}}
-
     <ant-calendar selected-date="oneDay" date-click="click()"></ant-calendar>
 
+    日历限定选择范围
+    <ant-calendar min-date="min" max-date="max"></ant-calendar>
 
-    <ant-datepicker></ant-datepicker>
-
+    日期选择与模型绑定
     <ant-datepicker ng-model="oneDay"></ant-datepicker>
+
+    不可用的日期选择
+    <ant-datepicker disabled="true"></ant-datepicker>
+
+    日期限定选择范围
+    <ant-datepicker min-date="min" max-date="max"></ant-datepicker>
 </section>
 
 </div>

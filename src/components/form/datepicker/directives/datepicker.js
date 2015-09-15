@@ -2,19 +2,15 @@ import template from "../templates/datepicker.html";
 
 export default class DatePickerDirective {
 	constructor($document, $filter, $timeout) {
-		// 视图模式，一个三个，可以切换，默认是显示日期的
-		this.ViewStates = Object.freeze({
-			DATE: 0,
-			MONTH: 1,
-			YEAR: 2
-		});
-
 		this.template = template;
 		this.restrict = "E";
 
 		this.scope = {
+			minDate: "=",
+			maxDate: "=",
 			placeholder: "=",
-			currentDate: "=ngModel"
+			currentDate: "=ngModel",
+			disabled: "="
 		};
 
 		this.$document = $document;
@@ -40,9 +36,17 @@ export default class DatePickerDirective {
 		var that = this;
 
 		$scope.$watch("currentDate", function(newDate) {
-			$scope.selectedDate = newDate;
-			$scope.currentDateStr = that.$filter('date')(newDate, "yyyy-MM-dd");
+			if (newDate) {
+				$scope.selectedDate = newDate;
+				$scope.currentDateStr = that.$filter('date')(newDate, "yyyy-MM-dd");
+			}
 		});
+
+		$scope.showPop = function() {
+			if (!$scope.disabled) {
+				$scope.pop = true;
+			}
+		};
 
 		$scope.dateClick = function() {
 			that.$timeout(function() {

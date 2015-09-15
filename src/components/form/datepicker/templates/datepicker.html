@@ -1,9 +1,10 @@
 <span class="ant-calendar-picker"
-      ng-class="{'ant-calendar-picker-open':pop}">
+      ng-class="{'ant-calendar-picker-disabled':disabled, 'ant-calendar-picker-open':pop}">
 	<input readonly placeholder="请选择日期"
 	       class="ant-calendar-picker-input ant-input"
-	       ng-value="currentDateStr">
-	<span class="ant-calendar-picker-icon" unselectable="true" ng-click="pop=true"></span>
+	       ng-value="currentDateStr" ng-disabled="disabled">
+	<span class="ant-calendar-picker-icon" unselectable="true" ng-click="showPop()"></span>
 </span>
 
-<ant-calendar ng-show="pop" selected-date="selectedDate" date-click="dateClick()"></ant-calendar>
+<ant-calendar ng-show="pop" min-date="minDate" max-date="maxDate"
+              selected-date="selectedDate" date-click="dateClick()"></ant-calendar>
