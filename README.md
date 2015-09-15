@@ -24,3 +24,11 @@
 - [x] datepicker能点出来了，可以设置disabled，最大最小日期
 - [x] number input凑合能用了，可以设置disabled，最大最小值
 - [ ] slider
+
+
+# 运行方式
+
+- npm install
+- npm run dev
+
+浏览器打开：http://localhost:8080/
