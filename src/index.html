@@ -105,13 +105,25 @@
 
 <hr/>
 
-<section>
+<section ng-controller="NumberController">
     <h3>滑动选择器</h3>
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             一个简单的滑动选择器
             <ant-slider></ant-slider>
+        </div>
+        <div class="col-6">
+            绑定一个值
+            <ant-slider ng-model="value"></ant-slider>
+        </div>
+        <div class="col-6">
+            限定最大最小值
+            <ant-slider min="2" max="maxValue"></ant-slider>
+        </div>
+        <div class="col-6">
+            禁用
+            <ant-slider disabled="true"></ant-slider>
         </div>
     </div>
 </section>

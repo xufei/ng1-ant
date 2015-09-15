@@ -1,6 +1,6 @@
 <div class="ant-slider">
-	<div class="ant-slider-track" style="width: 31%;"></div>
+	<div class="ant-slider-track" ng-style="{width:(value * 100 / max) + '%'}"></div>
 	<span class="ant-slider-tooltip-wrap ant-slider-tooltip-wrap-open">
-		<div class="ant-slider-handle" style="left: 31%;"></div>
+		<div class="ant-slider-handle" ng-style="{left:(value * 100 / max) + '%'}"></div>
 	</span>
 </div>
