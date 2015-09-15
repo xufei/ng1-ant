@@ -81,7 +81,7 @@ export default class CalendarDirective {
 
 		$scope.selectYear = function (year) {
 			calendar.year = year;
-			$scope.viewMode = this.ViewStates.MONTH;
+			$scope.viewMode = this.ViewStates.DATE;
 
 			$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
 		}.bind(this);
