@@ -15,6 +15,10 @@ export default class NumberInputDirective {
 
 	link(scope, element, attrs) {
 		this.$scope = scope;
+
+		if (!scope.value) {
+			scope.value = 0;
+		}
 	}
 
 	controller($scope) {
