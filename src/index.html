@@ -11,41 +11,109 @@
 <body ng-app="app">
 
 <section ng-controller="CheckboxController">
-    <label>
-        <ant-checkbox></ant-checkbox>
-        测试测试
-    </label>
-    <label>
-        <ant-checkbox ng-model="checkValue"></ant-checkbox>
-        绑定到controller中的变量 checkValue: {{checkValue}}
-    </label>
-    <label>
-        <ant-checkbox disabled="true"></ant-checkbox>
-        不可用状态
-    </label>
-    <label>
-        <ant-checkbox disabled="checkValue"></ant-checkbox>
-        不可用状态绑定到另外一个变量
-    </label>
+    <h3>Checkbox</h3>
+
+    <div class="row">
+        <div class="col-4">
+            <label>
+                <ant-checkbox></ant-checkbox>
+                测试测试
+            </label>
+        </div>
+        <div class="col-4">
+            <label>
+                <ant-checkbox ng-model="checkValue"></ant-checkbox>
+                绑定到controller中的变量 checkValue: {{checkValue}}
+            </label>
+        </div>
+        <div class="col-4">
+            <label>
+                <ant-checkbox disabled="true"></ant-checkbox>
+                不可用状态
+            </label>
+        </div>
+        <div class="col-4">
+            <label>
+                <ant-checkbox disabled="checkValue"></ant-checkbox>
+                不可用状态绑定到另外一个变量
+            </label>
+        </div>
+    </div>
 </section>
 
 <hr/>
 
 <section ng-controller="DateController">
-    one day in Teletubbies land: {{oneDay.toLocaleString()}}
-    <ant-calendar selected-date="oneDay" date-click="click()"></ant-calendar>
+    <h3>日历和日期选择</h3>
 
-    日历限定选择范围
-    <ant-calendar min-date="min" max-date="max"></ant-calendar>
+    <div class="row">
+        <div class="col-4">
+            one day in Teletubbies land: {{oneDay.toLocaleString()}}
+            <ant-calendar selected-date="oneDay" date-click="click()"></ant-calendar>
+        </div>
+        <div class="col-4">
+            日历限定选择范围
+            <ant-calendar min-date="min" max-date="max"></ant-calendar>
+        </div>
+        <div class="col-4">
+            日期选择与模型绑定
+            <ant-datepicker ng-model="oneDay"></ant-datepicker>
+        </div>
+        <div class="col-4">
+            不可用的日期选择
+            <ant-datepicker disabled="true"></ant-datepicker>
+        </div>
+        <div class="col-4">
+            日期限定选择范围
+            <ant-datepicker min-date="min" max-date="max"></ant-datepicker>
+        </div>
+    </div>
+</section>
 
-    日期选择与模型绑定
-    <ant-datepicker ng-model="oneDay"></ant-datepicker>
+<hr/>
 
-    不可用的日期选择
-    <ant-datepicker disabled="true"></ant-datepicker>
+<section ng-controller="NumberController">
+    <h3>数字输入</h3>
 
-    日期限定选择范围
-    <ant-datepicker min-date="min" max-date="max"></ant-datepicker>
+    <div class="row">
+        <div class="col-6">
+            <label>
+                <ant-number-input></ant-number-input>
+                测试测试
+            </label>
+        </div>
+        <div class="col-6">
+            <label>
+                <ant-number-input ng-model="value"></ant-number-input>
+                绑定到controller中的变量 value: {{value}}
+            </label>
+        </div>
+        <div class="col-6">
+            <label>
+                <ant-number-input disabled="true"></ant-number-input>
+                不可用状态
+            </label>
+        </div>
+        <div class="col-6">
+            <label>
+                <ant-number-input ng-model="value" min-value="3" max-value="maxValue"></ant-number-input>
+                测试测试
+            </label>
+        </div>
+    </div>
+</section>
+
+<hr/>
+
+<section>
+    <h3>滑动选择器</h3>
+
+    <div class="row">
+        <div class="col-4">
+            一个简单的滑动选择器
+            <ant-slider></ant-slider>
+        </div>
+    </div>
 </section>
 
 </div>
