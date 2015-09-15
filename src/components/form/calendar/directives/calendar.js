@@ -72,14 +72,20 @@ export default class CalendarDirective {
 			$scope.viewMode = CalendarDirective.ViewStates.DATE;
 
 			$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
-		}.bind(this);
+		};
 
 		$scope.selectYear = function (year) {
 			calendar.year = year;
 			$scope.viewMode = CalendarDirective.ViewStates.DATE;
 
 			$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
-		}.bind(this);
+		};
+
+		$scope.selectNow = function() {
+			$scope.now = new Date();
+
+			calendar.currentDate = $scope.now;
+		};
 	}
 }
 
