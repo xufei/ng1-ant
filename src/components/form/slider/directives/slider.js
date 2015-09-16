@@ -27,6 +27,10 @@ export default class SliderDirective {
 		}
 
 		this.$document.on("keypress", function (evt) {
+			if ($scope.disabled) {
+				return;
+			}
+
 			if ((evt.keyCode || evt.which) == "45") {
 				$scope.decrease();
 				$scope.$digest();
@@ -38,10 +42,29 @@ export default class SliderDirective {
 		});
 
 		$scope.mousedown = function() {
+			if ($scope.disabled) {
+				return;
+			}
+
 			$scope.dragging = true;
 		};
 
+		$scope.trackClick = function(evt) {
+			if ($scope.disabled) {
+				return;
+			}
+
+			var allWidth = evt.currentTarget.offsetWidth;
+			var currentWidth = (evt.offsetX || evt.layerX);
+
+			$scope.changeValue(Math.round($scope.max * currentWidth / allWidth));
+		};
+
 		this.$document.on("mousemove", function (evt) {
+			if ($scope.disabled) {
+				return;
+			}
+
 			if ($scope.dragging) {
 				var allWidth = element.children()[0].offsetWidth;
 				var currentWidth = evt.clientX - offset(element.find("div")[1]).x;
@@ -52,6 +75,10 @@ export default class SliderDirective {
 		});
 
 		this.$document.on("mouseup", function () {
+			if ($scope.disabled) {
+				return;
+			}
+
 			$scope.dragging = false;
 			$scope.$digest();
 		});
@@ -99,13 +126,6 @@ export default class SliderDirective {
 			if (this.valueInRange(value)) {
 				$scope.value = value;
 			}
-		};
-
-		$scope.trackClick = function(evt) {
-			var allWidth = evt.currentTarget.offsetWidth;
-			var currentWidth = (evt.offsetX || evt.layerX);
-
-			$scope.changeValue(Math.round($scope.max * currentWidth / allWidth));
 		};
 	}
 }
