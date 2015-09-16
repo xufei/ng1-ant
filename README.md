@@ -23,7 +23,7 @@
 - [x] calendar凑合能用，但样式不太合理，已经向ant那边提了[issue](https://github.com/ant-design/ant-design/issues/282)，看能不能优化下
 - [x] datepicker能点出来了，可以设置disabled，最大最小日期
 - [x] number input凑合能用了，可以设置disabled，最大最小值
-- [ ] slider
+- [x] slider 凑合能用了，待优化
 
 
 # 运行方式
