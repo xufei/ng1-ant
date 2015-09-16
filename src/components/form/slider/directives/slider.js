@@ -15,75 +15,45 @@ export default class SliderDirective {
 		this.$document = $document;
 	}
 
-	link(scope, element, attrs) {
-		this.$scope = scope;
+	link($scope, element, attrs) {
+		this.$scope = $scope;
 
-		if (!scope.max) {
-			scope.max = 100;
+		if (!$scope.max) {
+			$scope.max = 100;
 		}
 
-		if (!scope.min) {
-			scope.min = 0;
+		if (!$scope.min) {
+			$scope.min = 0;
 		}
-
-		element.on("click", function (evt) {
-			var src = evt.srcElement ? evt.srcElement : evt.target;
-
-			if (src.tagName != "DIV") {
-				return;
-			}
-
-			var allWidth = element.children()[0].offsetWidth;
-			var currentWidth = (evt.offsetX || evt.layerX);
-
-			scope.changeValue(Math.round(scope.max * currentWidth / allWidth));
-			scope.$digest();
-		});
 
 		this.$document.on("keypress", function (evt) {
 			if ((evt.keyCode || evt.which) == "45") {
-				scope.decrease();
-				scope.$digest();
+				$scope.decrease();
+				$scope.$digest();
 			}
 			else if ((evt.keyCode || evt.which) == "61") {
-				scope.increase();
-				scope.$digest();
+				$scope.increase();
+				$scope.$digest();
 			}
 		});
 
-		var dragging = false;
-		var value = scope.value;
-		var stepperEle = angular.element(element.find("span")[0].firstChild);
+		$scope.mousedown = function() {
+			$scope.dragging = true;
+		};
 
-		stepperEle.on("mousedown", function () {
-			dragging = true;
-		});
-
-		element.on("mousemove", function (evt) {
-			if (dragging) {
+		this.$document.on("mousemove", function (evt) {
+			if ($scope.dragging) {
 				var allWidth = element.children()[0].offsetWidth;
 				var currentWidth = evt.clientX - offset(element.find("div")[1]).x;
 
-				var temp = Math.round(scope.max * currentWidth / allWidth);
-				if ((temp >= 0) && (temp <= scope.max)) {
-					value = temp;
-
-					scope.changeValue(value);
-					scope.$digest();
-
-					//stepperEle.css("width", (currentWidth - 1) + "px");
-				}
+				$scope.changeValue(Math.round($scope.max * currentWidth / allWidth));
+				$scope.$digest();
 			}
 		});
 
 		this.$document.on("mouseup", function () {
-			if (dragging) {
-				//stepperEle.css("width", (value * 100 / scope.max) + "%");
-				scope.changeValue(value);
-				scope.$digest();
-
-				dragging = false;
-			}
+			$scope.dragging = false;
+			$scope.$digest();
 		});
 
 		function offset(element) {
@@ -115,15 +85,12 @@ export default class SliderDirective {
 				return true;
 			}
 
-			if ($scope.min) {
-				if (value - $scope.min < 0) {
-					return false;
-				}
+			if (value - $scope.min < 0) {
+				return false;
 			}
-			if ($scope.max) {
-				if (value - $scope.max > 0) {
-					return false;
-				}
+
+			if (value - $scope.max > 0) {
+				return false;
 			}
 			return true;
 		};
@@ -132,6 +99,13 @@ export default class SliderDirective {
 			if (this.valueInRange(value)) {
 				$scope.value = value;
 			}
+		};
+
+		$scope.trackClick = function(evt) {
+			var allWidth = evt.currentTarget.offsetWidth;
+			var currentWidth = (evt.offsetX || evt.layerX);
+
+			$scope.changeValue(Math.round($scope.max * currentWidth / allWidth));
 		};
 	}
 }
