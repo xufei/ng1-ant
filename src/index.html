@@ -1,134 +1,156 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>ng1 ant design</title>
-    <link rel="stylesheet" href="http://ant.design/dist/antd-0.9.1-beta2.min.css">
-    <script src="//cdn.bootcss.com/angular.js/1.4.5/angular.min.js"></script>
-    <base href="/">
+	<meta charset="UTF-8">
+	<title>ng1 ant design</title>
+	<link rel="stylesheet" href="http://ant.design/dist/antd-0.9.1-beta4.min.css">
+	<script src="//cdn.bootcss.com/angular.js/1.4.5/angular.min.js"></script>
+	<base href="/">
 
 </head>
 <body ng-app="app">
 
 <section ng-controller="CheckboxController">
-    <h3>Checkbox</h3>
+	<h3>Checkbox</h3>
 
-    <div class="row">
-        <div class="col-4">
-            <label>
-                <ant-checkbox></ant-checkbox>
-                测试测试
-            </label>
-        </div>
-        <div class="col-4">
-            <label>
-                <ant-checkbox ng-model="checkValue"></ant-checkbox>
-                绑定到controller中的变量 checkValue: {{checkValue}}
-            </label>
-        </div>
-        <div class="col-4">
-            <label>
-                <ant-checkbox disabled="true"></ant-checkbox>
-                不可用状态
-            </label>
-        </div>
-        <div class="col-4">
-            <label>
-                <ant-checkbox disabled="checkValue"></ant-checkbox>
-                不可用状态绑定到另外一个变量
-            </label>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-4">
+			<label>
+				<ant-checkbox></ant-checkbox>
+				测试测试
+			</label>
+		</div>
+		<div class="col-4">
+			<label>
+				<ant-checkbox ng-model="checkValue"></ant-checkbox>
+				绑定到controller中的变量 checkValue: {{checkValue}}
+			</label>
+		</div>
+		<div class="col-4">
+			<label>
+				<ant-checkbox disabled="true"></ant-checkbox>
+				不可用状态
+			</label>
+		</div>
+		<div class="col-4">
+			<label>
+				<ant-checkbox disabled="checkValue"></ant-checkbox>
+				不可用状态绑定到另外一个变量
+			</label>
+		</div>
+	</div>
 </section>
 
 <hr/>
 
 <section ng-controller="DateController">
-    <h3>日历和日期选择</h3>
+	<h3>日历和日期选择</h3>
 
-    <div class="row">
-        <div class="col-6">
-            one day in Teletubbies land: {{oneDay.toLocaleString()}}
-            <ant-calendar selected-date="oneDay" date-click="click()"></ant-calendar>
-        </div>
-        <div class="col-6">
-            日历限定选择范围
-            <ant-calendar min-date="min" max-date="max"></ant-calendar>
-        </div>
-        <div class="col-6">
-            日期选择与模型绑定
-            <ant-datepicker ng-model="oneDay"></ant-datepicker>
-        </div>
-        <div class="col-6">
-            不可用的日期选择
-            <ant-datepicker disabled="true"></ant-datepicker>
-        </div>
-        <div class="col-6">
-            日期限定选择范围
-            <ant-datepicker min-date="min" max-date="max"></ant-datepicker>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-6">
+			one day in Teletubbies land: {{oneDay.toLocaleString()}}
+			<ant-calendar selected-date="oneDay" date-click="click()"></ant-calendar>
+		</div>
+		<div class="col-6">
+			日历限定选择范围
+			<ant-calendar min-date="min" max-date="max"></ant-calendar>
+		</div>
+		<div class="col-6">
+			日期选择与模型绑定
+			<ant-datepicker ng-model="oneDay"></ant-datepicker>
+		</div>
+		<div class="col-6">
+			不可用的日期选择
+			<ant-datepicker disabled="true"></ant-datepicker>
+		</div>
+		<div class="col-6">
+			日期限定选择范围
+			<ant-datepicker min-date="min" max-date="max"></ant-datepicker>
+		</div>
+	</div>
 </section>
 
 <hr/>
 
 <section ng-controller="NumberController">
-    <h3>数字输入</h3>
+	<h3>数字输入</h3>
 
-    <div class="row">
-        <div class="col-6">
-            <label>
-                <ant-number-input></ant-number-input>
-                测试测试
-            </label>
-        </div>
-        <div class="col-6">
-            <label>
-                <ant-number-input ng-model="value"></ant-number-input>
-                绑定到controller中的变量 value: {{value}}
-            </label>
-        </div>
-        <div class="col-6">
-            <label>
-                <ant-number-input disabled="true"></ant-number-input>
-                不可用状态
-            </label>
-        </div>
-        <div class="col-6">
-            <label>
-                <ant-number-input ng-model="value" min-value="3" max-value="maxValue"></ant-number-input>
-                限定最大最小值
-            </label>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-6">
+			<label>
+				<ant-number-input></ant-number-input>
+				测试测试
+			</label>
+		</div>
+		<div class="col-6">
+			<label>
+				<ant-number-input ng-model="value"></ant-number-input>
+				绑定到controller中的变量 value: {{value}}
+			</label>
+		</div>
+		<div class="col-6">
+			<label>
+				<ant-number-input disabled="true"></ant-number-input>
+				不可用状态
+			</label>
+		</div>
+		<div class="col-6">
+			<label>
+				<ant-number-input ng-model="value" min-value="3" max-value="maxValue"></ant-number-input>
+				限定最大最小值
+			</label>
+		</div>
+	</div>
 </section>
 
 <hr/>
 
 <section ng-controller="NumberController">
-    <h3>滑动选择器</h3>
+	<h3>滑动选择器</h3>
 
-    <div class="row">
-        <div class="col-6">
-            一个简单的滑动选择器
-            <ant-slider></ant-slider>
-        </div>
-        <div class="col-6">
-            绑定一个值value:{{value}}
-            <ant-slider ng-model="value"></ant-slider>
-        </div>
-        <div class="col-6">
-            限定最大最小值
-            <ant-slider min="2" max="maxValue"></ant-slider>
-        </div>
-        <div class="col-6">
-            禁用
-            <ant-slider ng-model="23" disabled="true"></ant-slider>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-6">
+			一个简单的滑动选择器
+			<ant-slider></ant-slider>
+		</div>
+		<div class="col-6">
+			绑定一个值value:{{value}}
+			<ant-slider ng-model="value"></ant-slider>
+		</div>
+		<div class="col-6">
+			限定最大最小值
+			<ant-slider min="2" max="maxValue"></ant-slider>
+		</div>
+		<div class="col-6">
+			禁用
+			<ant-slider disabled="true"></ant-slider>
+		</div>
+	</div>
 </section>
 
-</div>
+<hr/>
+
+<section ng-controller="SelectController">
+	<h3>下拉选择</h3>
+
+	<div class="row">
+		<div class="col-6">
+			<ant-select></ant-select>
+		</div>
+	</div>
+</section>
+
+<hr/>
+
+<section>
+	<h3>分页</h3>
+
+	<div class="row">
+		<div class="col-12">
+			<ant-pager></ant-pager>
+		</div>
+	</div>
+</section>
 
 </body>
 </html>
