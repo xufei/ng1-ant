@@ -2,21 +2,13 @@
 	<li title="Previous Page" class="ant-pagination-disabled ant-pagination-prev">
 		<a></a>
 	</li>
-	<li title="First Page" class="ant-pagination-item ant-pagination-item-1 ant-pagination-item-active">
-		<a>1</a>
+
+	<li ng-attr-title="Page {{page.index}}" class="ant-pagination-item"
+			ng-repeat="page in pager.pages" ng-click="goto(page)"
+			ng-class="{'ant-pagination-item-active':page.active}">
+		<a>{{page.index}}</a>
 	</li>
-	<li title="Page 2" class="ant-pagination-item ant-pagination-item-2">
-		<a>2</a>
-	</li>
-	<li title="Page 3" class="ant-pagination-item ant-pagination-item-3">
-		<a>3</a>
-	</li>
-	<li title="Page 4" class="ant-pagination-item ant-pagination-item-4">
-		<a>4</a>
-	</li>
-	<li title="Page 5" class="ant-pagination-item ant-pagination-item-5">
-		<a>5</a>
-	</li>
+
 	<li title="Next 5 Page" class="ant-pagination-jump-next">
 		<a></a>
 	</li>
@@ -32,7 +24,7 @@
 			<span class="ant-select-selection ant-select-selection--single" role="combobox" aria-autocomplete="list"
 			aria-haspopup="true" tabindex="0" aria-expanded="false">
 				<span class="ant-select-selection__rendered">
-					<span>20 条/页</span>
+					<span>{{pager.pageSize}} 条/页</span>
 				</span>
 				<span class="ant-select-arrow" tabindex="-1" style="outline:none;">
 					<b></b>

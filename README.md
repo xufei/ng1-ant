@@ -25,6 +25,8 @@
 - [x] number input凑合能用了，可以设置disabled，最大最小值
 - [x] slider 凑合能用了，可以设置disabled，待优化
 
+- [x] tree凑合能用了，可以加载数据，可以选中，可以复选，可以获取选中数据
+
 
 # 运行方式
 

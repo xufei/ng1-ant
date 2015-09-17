@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ng1 ant design</title>
-	<link rel="stylesheet" href="http://ant.design/dist/antd-0.9.1-beta4.min.css">
+	<link rel="stylesheet" href="http://ant.design/dist/antd-0.9.1-beta6.min.css">
 	<script src="//cdn.bootcss.com/angular.js/1.4.5/angular.min.js"></script>
 	<base href="/">
 
@@ -147,7 +147,21 @@
 
 	<div class="row">
 		<div class="col-12">
-			<ant-pager></ant-pager>
+			<ant-pager count="177"></ant-pager>
+		</div>
+	</div>
+</section>
+
+
+<hr/>
+
+<section ng-controller="TreeController">
+	<h3>树</h3>
+
+	<div class="row">
+		<div class="col-6">
+			<button ng-click="getCheckedItems()">获取选中项</button>
+			<ant-tree tree-data="areaData" tree-id="aaa"></ant-tree>
 		</div>
 	</div>
 </section>
