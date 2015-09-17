@@ -33,9 +33,25 @@ export default class TreeController {
 			console.table(getCheckedItems($scope.areaData));
 		};
 
+		$scope.expandAll = function() {
+			$scope.areaData.forEach(it => expandItem(it, true));
+		};
+
+		$scope.collapseAll = function() {
+			$scope.areaData.forEach(it => expandItem(it, false));
+		};
+
+		function expandItem(data, flag) {
+			if (data.children) {
+				data.$expanded = flag;
+
+				data.children.forEach(it => expandItem(it, flag));
+			}
+		}
+
 		function getCheckedItems(data) {
 			var result = [];
-			data.forEach(function(it) {
+			data.forEach(it => {
 				if (it.$checked) {
 					result.push(it);
 				}

@@ -44,7 +44,7 @@ export default class TreeDirective {
 
 		$scope.arrowClass = function(node) {
 			if (node.children && node.children.length > 0) {
-				if (node.$collapsed) {
+				if (node.$expanded) {
 					return "ant-tree-noline_close";
 				}
 				else {
@@ -118,7 +118,7 @@ export default class TreeDirective {
 		}
 
 		$scope.iconClick = function(node) {
-			node.$collapsed = !node.$collapsed;
+			node.$expanded = !node.$expanded;
 
 			$scope.getRoot().$emit("sn.controls.tree:nodeIconClicked", {currentNode: node});
 		};

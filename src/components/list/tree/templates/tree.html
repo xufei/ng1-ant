@@ -6,6 +6,6 @@
 		<a title="leaf" ng-class="{'ant-tree-node-selected':node.$selected}" ng-click="itemClick(node)">
 			<span class="ant-tree-title">{{node.name}}</span>
 		</a>
-		<ant-tree tree-data="node.children" ng-hide="node.$collapsed"></ant-tree>
+		<ant-tree tree-data="node.children" ng-show="node.$expanded"></ant-tree>
 	</li>
 </ul>
