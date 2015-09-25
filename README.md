@@ -2,6 +2,9 @@
 我能用[ant design](https://github.com/ant-design/ant-design)的样式做一套angular的组件吗……
 
 
+我想了一个办法，在一套组件中使用不同的模板，然后生成两套长相不同，但逻辑一致的控件库 :100:
+
+
 做的过程中，对原代码存疑的地方：
 
 日历控件：

@@ -1,8 +1,17 @@
-import template from "../templates/pager.html";
+
+import Config from "../../../../config";
+
+import antTpl from "../templates/ant/pager.html";
+import snailTpl from "../templates/snail/pager.html";
+
+var tpls = {
+	ant: antTpl,
+	snail: snailTpl
+};
 
 export default class PagerDirective {
 	constructor() {
-		this.template = template;
+		this.template = tpls[Config.theme];
 		this.restrict = "E";
 
 		this.scope = {
@@ -34,7 +43,6 @@ export default class PagerDirective {
 		});
 	}
 }
-
 
 class Pager {
 	constructor() {
