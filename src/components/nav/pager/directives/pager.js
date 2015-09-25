@@ -21,13 +21,13 @@ export default class PagerDirective {
 
 		$scope.pager = pager;
 
-		$scope.$watch("pageSize", function(size) {
+		$scope.$watch("pageSize", function (size) {
 			if (typeof size == "number") {
 				pager.pageSize = size;
 			}
 		});
 
-		$scope.$watch("count", function(count) {
+		$scope.$watch("count", function (count) {
 			if (typeof count == "number") {
 				pager.count = count;
 			}
@@ -63,8 +63,6 @@ class Pager {
 	}
 
 	resetPageList() {
-		var that = this;
-
 		if (this._count % this._pageSize == 0) {
 			this.totalPages = this._count / this._pageSize;
 		} else {
@@ -79,8 +77,8 @@ class Pager {
 
 		var last = Math.min(this._offset + this._listSize, this.totalPages);
 
-		this.pages = Array.from(Array(last-that._offset), (v, i) => Object.create({
-			index: i+that._offset,
+		this.pages = Array.from(Array(last - this._offset), (v, i) => Object.create({
+			index: i + this._offset,
 			active: false
 		}));
 	}
