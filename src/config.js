@@ -1,5 +1,5 @@
 var Config = {
-	theme: "ant"
+	theme: "snail"
 };
 
 export default Config;

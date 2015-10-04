@@ -32,7 +32,8 @@ module.exports = function makeWebpackConfig (options) {
     config.entry = {}
   } else {
     config.entry = {
-      app: './src/app.js'
+      ant: './src/ant.js',
+      snail: './src/snail.js'
     }
   }
 
